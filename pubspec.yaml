@@ -1,0 +1,45 @@
+name: nano
+description: "A new Flutter project."
+# Prevents accidental publishing to pub.dev
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  lottie: ^3.1.2
+  google_fonts: ^6.2.1
+  get: ^4.3.8
+  shared_preferences: ^2.2.3
+  flutter_animate: ^4.5.0
+  blue_thermal_printer: ^1.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+          
+
+  uses-material-design: true
+
+  assets:
+    - assets/Lottie/1Q8ybemXun.json
+    - assets/Lottie/HgdBrd017Y.json
+    - assets/Lottie/rvuK8x5tkm.json
+    - assets/Lottie/kNMKF7dgJ0.json
+    - assets/gifs/order.gif
+    - assets/gifs/payment.gif
+    - assets/images/logo.png

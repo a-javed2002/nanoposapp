@@ -1,0 +1,38 @@
+"sell_lines": [
+    {
+        "id": 5824,
+        "transaction_id": 1130,
+        "product_id": 49,
+        "variation_id": 50,
+        "quantity": 3,
+        "product": {
+            "id": 49,
+            "name": "Arabic Special Platter",
+            "business_id": 1,
+            "type": "single",
+            "unit_id": 4,
+            "image": "1715007398_Arabic_Special_Platter 3450.webp",
+            "product_description": "<p>Arabic_Special_Platter 3450</p>",
+            "image_url": "https://alarahi.nanotechnology.com.pk/uploads/img/1715007398_Arabic_Special_Platter%203450.webp",
+            "brand": null
+        }
+    },
+    {
+        "id": 5825,
+        "transaction_id": 1130,
+        "product_id": 84,
+        "variation_id": 85,
+        "quantity": 1,
+        "product": {
+            "id": 84,
+            "name": "Blueberry Mojito",
+            "business_id": 1,
+            "type": "single",
+            "unit_id": 7,
+            "image_url": "https://alarahi.nanotechnology.com.pk/img/default.png",
+            "product_description": null,
+            
+            "brand": null
+        }
+    }
+]
