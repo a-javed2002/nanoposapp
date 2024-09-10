@@ -204,7 +204,7 @@ class CheckoutPage extends StatelessWidget {
     String baseUrl = await _getBaseUrl();
     
     final String url =
-        'https://siroc.nanotechnology.com.pk/api/update/${order.transactionId}'; // Replace with your API endpoint
+        'https://$baseUrl/api/update/${order.transactionId}'; // Replace with your API endpoint
     print(order.transactionId);
 
     // Decode jsonData to extract nested fields

@@ -318,7 +318,7 @@ class OrderController extends GetxController {
 
   // void updateOrder(OrderTableModal order) async {
   //   final String url =
-  //       'https://siroc.nanotechnology.com.pk/api/update/${order.transactionId}'; // Replace with your API endpoint
+  //       'https://$baseUrl/api/update/${order.transactionId}'; // Replace with your API endpoint
   //   print(order.transactionId);
 
   //   // Decode jsonData to extract nested fields
@@ -460,7 +460,7 @@ class OrderController extends GetxController {
   Future<void> placeOrder(OrderTableModal order) async {
     String baseUrl = await _getBaseUrl();
     isLoading.value = true;
-    final String url = 'https://siroc.nanotechnology.com.pk/api/store';
+    final String url = 'https://$baseUrl/api/store';
 
     Map<String, dynamic> products = {};
     for (int i = 0; i < order.products.length; i++) {

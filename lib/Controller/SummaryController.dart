@@ -51,7 +51,7 @@ class SummaryController extends GetxController {
         print(businessId);
         print(locationId);
       final response = await http.get(Uri.parse(
-          'https://siroc.nanotechnology.com.pk/api/order-single/$transactionid/$businessId'));
+          'https://$baseUrl/api/order-single/$transactionid/$businessId'));
 
       if (response.statusCode == 200) {
         final data = json.decode(response.body);

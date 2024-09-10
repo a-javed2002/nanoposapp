@@ -44,7 +44,7 @@ class TableController extends GetxController {
         print(businessId);
         print(locationId);
         final response = await http.get(
-          Uri.parse('https://siroc.nanotechnology.com.pk/api/get-table/$businessId/$locationId'),
+          Uri.parse('https://$baseUrl/api/get-table/$businessId/$locationId'),
         );
 
         if (response.statusCode == 200) {
@@ -94,7 +94,7 @@ class TableController extends GetxController {
     try {
       final response = await http.get(
         Uri.parse(
-            'https://siroc.nanotechnology.com.pk/api/table-check/$id/$businessId'),
+            'https://$baseUrl/api/table-check/$id/$businessId'),
       );
 
       if (response.statusCode == 200) {

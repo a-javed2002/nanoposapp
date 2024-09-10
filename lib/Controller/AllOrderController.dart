@@ -34,7 +34,7 @@ class AllOrderController extends GetxController {
     String baseUrl = await _getBaseUrl();
     try {
       isLoading(true);
-      var response = await http.get(Uri.parse('https://siroc.nanotechnology.com.pk/api/orders'));
+      var response = await http.get(Uri.parse('https://$baseUrl/api/orders'));
       if (response.statusCode == 200) {
         var jsonData = json.decode(response.body);
         var fetchedOrders = (jsonData as List).map((order) => OrderTableModal.fromJson(order)).toList();
