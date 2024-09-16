@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nano/View/Auth/baseUrl.dart';
+import 'package:nano/View/Auth/name.dart';
 import 'package:nano/View/Auth/updatePassword.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -57,6 +58,23 @@ class SettingsScreen extends StatelessWidget {
               label: Text('Set Base URL'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orangeAccent,
+                padding: EdgeInsets.symmetric(vertical: 12),
+                textStyle: TextStyle(fontSize: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            // Set Base URL button
+            ElevatedButton.icon(
+              onPressed: () {
+                Get.to(NameScreen());
+              },
+              icon: Icon(Icons.shop, color: Colors.white),
+              label: Text('Set POS Name'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent,
                 padding: EdgeInsets.symmetric(vertical: 12),
                 textStyle: TextStyle(fontSize: 16),
                 shape: RoundedRectangleBorder(

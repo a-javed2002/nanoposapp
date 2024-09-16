@@ -356,7 +356,7 @@ class OrderEditController extends GetxController {
     String baseUrl = await _getBaseUrl();
     isLoading.value = true;
     final String url =
-        'https://$baseUrl/api/update/${order.transactionId}'; // Replace with your API endpoint
+        '$baseUrl/api/update/${order.transactionId}'; // Replace with your API endpoint
     print('Transaction id ${order.transactionId}');
 
     // Decode jsonData to extract nested fields

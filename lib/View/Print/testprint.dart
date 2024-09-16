@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:blue_thermal_printer/blue_thermal_printer.dart';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 ///Test printing
 class TestPrint {
@@ -55,12 +56,14 @@ Future<void> printBill(
   const double taxRate = 0.10; // Example tax rate of 10%
   DateTime now = DateTime.now();
 
+  String posName = await _posName();
+
   bluetooth.isConnected.then((isConnected) {
     if (isConnected == true) {
       bluetooth.printNewLine();
       bluetooth.printImageBytes(imageBytesFromAsset); // Logo from Asset
       bluetooth.printNewLine();
-      bluetooth.printCustom("Restaurant Name", Size.boldLarge.val, Align.center.val);
+      bluetooth.printCustom(posName, Size.boldLarge.val, Align.center.val);
       bluetooth.printNewLine();
       bluetooth.printCustom("Order: ${order.tableName}-${now.millisecondsSinceEpoch}", Size.boldMedium.val, Align.center.val);
       bluetooth.printNewLine();
@@ -79,15 +82,15 @@ Future<void> printBill(
             int.parse(product.quantity) * double.parse(product.price);
         total += productTotal;
         tax += productTotal * taxRate;
-        bluetooth.printLeftRight("${product.quantity} x ${product.name}", "\$${productTotal.toStringAsFixed(2)}", Size.medium.val);
+        bluetooth.printLeftRight("${product.quantity} x ${product.name}", "RS ${productTotal.toStringAsFixed(2)}", Size.medium.val);
       }
 
       if(finall){
       // Print totals
       bluetooth.printNewLine();
-      bluetooth.print3Column("", "Sub-Total", "\$${total.toStringAsFixed(2)}", Size.bold.val);
-      bluetooth.print3Column("", "Tax", "\$${tax.toStringAsFixed(2)}", Size.bold.val);
-      bluetooth.print3Column("", "Total", "\$${(total + tax).toStringAsFixed(2)}", Size.bold.val);
+      bluetooth.print3Column("", "Sub-Total", "RS ${total.toStringAsFixed(2)}", Size.bold.val);
+      bluetooth.print3Column("", "Tax", "RS ${(tax).toStringAsFixed(2)}", Size.bold.val);
+      bluetooth.print3Column("", "Total", "RS ${(total + tax).toStringAsFixed(2)}", Size.bold.val);
       bluetooth.printNewLine();
       }
 
@@ -98,6 +101,13 @@ Future<void> printBill(
     }
   });
 }
+
+Future<String> _posName() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String storedBaseUrl = prefs.getString('pos_name') ?? "";
+
+    return storedBaseUrl; // Return the value
+  }
 
   sample() async {
     //image max 300px X 300px

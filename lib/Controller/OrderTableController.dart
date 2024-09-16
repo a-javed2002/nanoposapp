@@ -87,7 +87,7 @@ class OrderTableController extends GetxController {
     try {
       isLoading(true);
       var response = await http
-          .get(Uri.parse('https://$baseUrl/api/orders'));
+          .get(Uri.parse('$baseUrl/api/orders'));
       if (response.statusCode == 200) {
         var jsonData = json.decode(response.body);
         var fetchedOrders = (jsonData as List)
@@ -110,7 +110,7 @@ class OrderTableController extends GetxController {
       {bool temp = true}) async {
     String baseUrl = await _getBaseUrl();
     final String url =
-        'https://$baseUrl/api/update/${order.transactionId}'; // Replace with your API endpoint
+        '$baseUrl/api/update/${order.transactionId}'; // Replace with your API endpoint
     print(order.transactionId);
 
     // Decode jsonData to extract nested fields
@@ -302,7 +302,7 @@ class OrderTableController extends GetxController {
         print(locationId);
         print(saleId);
         final String apiUrl =
-            'https://$baseUrl/api/delete/$saleId/$businessId';
+            '$baseUrl/api/delete/$saleId/$businessId';
 
         final response = await http.delete(Uri.parse(apiUrl));
         print(jsonDecode(response.body));

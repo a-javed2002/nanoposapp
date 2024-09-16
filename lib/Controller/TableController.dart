@@ -44,7 +44,7 @@ class TableController extends GetxController {
         print(businessId);
         print(locationId);
         final response = await http.get(
-          Uri.parse('https://$baseUrl/api/get-table/$businessId/$locationId'),
+          Uri.parse('$baseUrl/api/get-table/$businessId/$locationId'),
         );
 
         if (response.statusCode == 200) {
@@ -94,7 +94,7 @@ class TableController extends GetxController {
     try {
       final response = await http.get(
         Uri.parse(
-            'https://$baseUrl/api/table-check/$id/$businessId'),
+            '$baseUrl/api/table-check/$id/$businessId'),
       );
 
       if (response.statusCode == 200) {

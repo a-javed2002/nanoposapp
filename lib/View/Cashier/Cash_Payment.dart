@@ -84,7 +84,7 @@ class CashPaymentController extends GetxController {
     
     loading.value = true;
     final String url =
-        'https://$baseUrl/api/update/${order.transactionId}'; // Replace with your API endpoint
+        '$baseUrl/api/update/${order.transactionId}'; // Replace with your API endpoint
     print(order.transactionId);
 
     // Decode jsonData to extract nested fields

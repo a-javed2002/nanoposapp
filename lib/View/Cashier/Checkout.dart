@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:nano/View/Auth/Login.dart';
 import 'package:nano/View/Cashier/Cash_Payment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:nano/View/Status_Screen/payment_done.dart';
 
 class CheckoutPage extends StatelessWidget {
   final OrderTableModal order;
@@ -19,7 +20,7 @@ class CheckoutPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Order Summary',
+          'Order Details',
           style: GoogleFonts.poppins(fontSize: 32),
         ),
       ),
@@ -30,12 +31,12 @@ class CheckoutPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                'Order Summary',
-                style: GoogleFonts.poppins(
-                    fontSize: 32, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 20),
+              // Text(
+              //   'Order Summary',
+              //   style: GoogleFonts.poppins(
+              //       fontSize: 32, fontWeight: FontWeight.bold),
+              // ),
+              // SizedBox(height: 20),
               _buildOrderDetails(order, context),
               SizedBox(height: 20),
               _buildSummary(order),
@@ -55,14 +56,14 @@ class CheckoutPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Order Details',
-                style: GoogleFonts.poppins(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10),
+              // Text(
+              //   'Order Details',
+              //   style: GoogleFonts.poppins(
+              //     fontSize: 24,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
+              // SizedBox(height: 10),
               Expanded(
                 child: ListView.builder(
                   itemCount: order.products.length,
@@ -171,7 +172,8 @@ class CheckoutPage extends StatelessWidget {
                   style: GoogleFonts.poppins(fontSize: 24),
                 ),
               )
-            : ElevatedButton(
+            : 
+            ElevatedButton(
                 onPressed: () {
                   // Get.to(() => CashPayment(
                   //       total: order.finalTotal,
@@ -179,13 +181,13 @@ class CheckoutPage extends StatelessWidget {
                   //     ));
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('Password updated successfully!'),
-                      backgroundColor: Colors.green,
+                      content: Text('Go To Cash Counter!'),
+                      backgroundColor: Colors.red,
                     ),
                   );
                 },
                 child: Text(
-                  'Pay with Cash',
+                  'Go To Cash Counter',
                   style: GoogleFonts.poppins(fontSize: 24),
                 ),
               )
@@ -204,7 +206,7 @@ class CheckoutPage extends StatelessWidget {
     String baseUrl = await _getBaseUrl();
     
     final String url =
-        'https://$baseUrl/api/update/${order.transactionId}'; // Replace with your API endpoint
+        '$baseUrl/api/update/${order.transactionId}'; // Replace with your API endpoint
     print(order.transactionId);
 
     // Decode jsonData to extract nested fields
@@ -254,8 +256,8 @@ class CheckoutPage extends StatelessWidget {
 
     // Define your payload as a Map
     Map<String, dynamic> payload = {
-      "_token": "Sm38MbDShTp30ScFmZW30XzIHHYUaT4lmhY7DCeH",
-      "_method": "PUT",
+      // "_token": "Sm38MbDShTp30ScFmZW30XzIHHYUaT4lmhY7DCeH",
+      // "_method": "POST",
       "location_id": orderData['location_id'],
       "sub_type": orderData['sub_type'] ?? "",
       "zone": "on",
@@ -353,6 +355,7 @@ class CheckoutPage extends StatelessWidget {
       if (response.statusCode == 200) {
         print('POST request successful');
         print('Response: ${response.body}');
+                    Get.to(() => PaymentPaidScreen());
       } else {
         print('Failed to send POST request');
         print('Response: ${response.body}');

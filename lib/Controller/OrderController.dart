@@ -460,7 +460,7 @@ class OrderController extends GetxController {
   Future<void> placeOrder(OrderTableModal order) async {
     String baseUrl = await _getBaseUrl();
     isLoading.value = true;
-    final String url = 'https://$baseUrl/api/store';
+    final String url = '$baseUrl/api/store';
 
     Map<String, dynamic> products = {};
     for (int i = 0; i < order.products.length; i++) {
